@@ -104,6 +104,9 @@ trait TranslatableMethodsTrait
 
     public function getCurrentLocale(): string
     {
+        if ($this instanceof Proxy && !$this->__isInitialized()) {
+            $this->__load();
+        }
         return $this->currentLocale ?: $this->getDefaultLocale();
     }
 
@@ -114,6 +117,9 @@ trait TranslatableMethodsTrait
 
     public function getDefaultLocale(): string
     {
+        if ($this instanceof Proxy && !$this->__isInitialized()) {
+            $this->__load();
+        }
         return $this->defaultLocale;
     }
 
